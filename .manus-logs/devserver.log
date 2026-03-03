@@ -1,0 +1,46 @@
+[2026-02-27T01:35:44.820Z] 8:35:44 PM [vite] changed tsconfig file detected: /home/ubuntu/caramel-digital-studio-v2/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.
+[2026-02-27T01:35:44.821Z] 8:35:44 PM [vite] changed tsconfig file detected: /home/ubuntu/caramel-digital-studio-v2/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.
+[2026-03-03T10:24:17.753Z] Starting dev server with command: pnpm run dev
+[2026-03-03T10:24:18.403Z] 
+[2026-03-03T10:24:18.404Z] > caramel-digital-studio-v2@0.1.0 dev /home/ubuntu/caramel-digital-studio-v2
+[2026-03-03T10:24:18.404Z] > next dev
+[2026-03-03T10:24:18.405Z] 
+[2026-03-03T10:24:19.557Z] ▲ Next.js 16.1.6 (Turbopack)
+[2026-03-03T10:24:19.557Z] - Local:         http://localhost:3000
+[2026-03-03T10:24:19.558Z] - Network:       http://169.254.0.21:3000
+[2026-03-03T10:24:19.558Z] 
+[2026-03-03T10:24:19.559Z] ✓ Starting...
+[2026-03-03T10:24:19.629Z] Attention: Next.js now collects completely anonymous telemetry regarding usage.
+[2026-03-03T10:24:19.630Z] This information is used to shape Next.js' roadmap and prioritize features.
+[2026-03-03T10:24:19.631Z] You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+[2026-03-03T10:24:19.631Z] https://nextjs.org/telemetry
+[2026-03-03T10:24:19.631Z] 
+[2026-03-03T10:24:21.457Z] ✓ Ready in 2.4s
+[2026-03-03T10:24:35.646Z] Persisting failed: Unable to write SST file 00000011.sst
+[2026-03-03T10:24:35.647Z] 
+[2026-03-03T10:24:35.647Z] Caused by:
+[2026-03-03T10:24:35.648Z] No such file or directory (os error 2)
+[2026-03-03T10:24:48.958Z] Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+[2026-03-03T10:24:53.747Z] Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+[2026-03-03T10:25:03.478Z] Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+[2026-03-03T10:25:07.716Z] Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+[2026-03-03T10:25:17.905Z] Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+[2026-03-03T10:25:22.324Z] Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+[2026-03-03T10:25:35.114Z] Persisting failed: Another write batch or compaction is already active (Only a single write operations is allowed at a time)
+[2026-03-03T10:25:45.489Z] Error: Turbopack build failed with 1 errors:
+[2026-03-03T10:25:45.490Z] ./app
+[2026-03-03T10:25:45.490Z] Error: Next.js inferred your workspace root, but it may not be correct.
+[2026-03-03T10:25:45.490Z] We couldn't find the Next.js package (next/package.json) from the project directory: /home/ubuntu/caramel-digital-studio-v2/app
+[2026-03-03T10:25:45.491Z] To fix this, set turbopack.root in your Next.js config, or ensure the Next.js package is resolvable from this directory.
+[2026-03-03T10:25:45.491Z] Note: For security and performance reasons, files outside of the project directory will not be compiled.
+[2026-03-03T10:25:45.491Z] See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+[2026-03-03T10:25:45.492Z] 
+[2026-03-03T10:25:45.492Z] at ignore-listed frames
+[2026-03-03T10:25:46.177Z] Attention: Next.js now collects completely anonymous telemetry regarding usage.
+[2026-03-03T10:25:46.178Z] This information is used to shape Next.js' roadmap and prioritize features.
+[2026-03-03T10:25:46.179Z] You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+[2026-03-03T10:25:46.179Z] https://nextjs.org/telemetry
+[2026-03-03T10:25:46.180Z] 
+[2026-03-03T10:25:46.183Z] [?25h
+[2026-03-03T10:25:46.216Z] ELIFECYCLE  Command failed with exit code 1.
+[2026-03-03T10:25:46.236Z] Dev server exited with code 1
