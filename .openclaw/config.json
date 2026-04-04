@@ -1,0 +1,10 @@
+{
+  "provider": "ollama",
+  "model": "gemma2:2b",
+  "ollamaBaseUrl": "http://localhost:11434",
+  "tools": ["web-search", "fetch", "repo-audit"],
+  "slack": {
+    "enabled": false,
+    "slashCommands": ["/audit", "/content"]
+  }
+}
