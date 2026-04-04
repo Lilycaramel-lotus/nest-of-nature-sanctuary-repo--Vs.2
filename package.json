@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "audit": "node agents/audit-site.js",
+    "content": "node agents/content-writer.js"
   },
   "dependencies": {
     "next": "14.2.35",
@@ -13,6 +15,7 @@
     "react-dom": "18.3.1"
   },
   "devDependencies": {
+    "@openclaw/cli": "^1.0.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
