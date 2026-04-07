@@ -1,13 +1,7 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-
 export default function WhatsAppButton() {
-  const searchParams = useSearchParams();
-
-  const utm = searchParams?.toString();
-  const baseUrl = "https://wa.me/27642205618";
-  const url = utm ? `${baseUrl}?${utm}` : baseUrl;
+  const url = "https://wa.me/27642205618";
 
   return (
     <a
