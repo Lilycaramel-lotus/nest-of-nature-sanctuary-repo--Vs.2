@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nest of Nature
 
-## Getting Started
+A sanctuary for healing and empowerment supporting women facing domestic abuse in Cape Town's deep south townships.
 
-First, run the development server:
+## 🌿 About
+
+**Nest of Nature** is founded by **Nosipho Banzana** and serves women in **Masiphumelele**, **Ocean View**, and **Fish Hoek** townships. We provide critical support through a network of nurses, social workers, and dedicated volunteers.
+
+**Launch Date:** May 16, 2026 • Cape Town, South Africa
+
+## 🚀 Features
+
+- **Home Page** - Hero section with dark/light mode toggle and mission overview
+- **Township Stories** - Blog featuring real stories of resilience and recovery
+- **Volunteer Portal** - Signup form for nurses, social workers, and community volunteers
+- **Contact & Sponsorship** - Direct contact for donations, partnerships, and inquiries
+
+## 🎨 Design
+
+- **Color Palette:**
+  - Primary Green: `#10B981`
+  - Dark Green: `#047857`
+  - Accent Blue: `#6EE7B7`
+- **Typography:** Playfair Display (headings), Inter (body)
+- **Dark/Light Mode:** Fully supported with localStorage persistence
+- **Responsive:** Mobile-first design
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js 14
+- **Language:** TypeScript
+- **Styling:** Inline CSS (no Tailwind)
+- **Deployment:** Vercel (Cape Town edge)
+- **Features:** PPR (Partial Pre-rendering) enabled
+
+## 📦 Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Clone the repository
+git clone https://github.com/LilyCaramel2/nest-of-nature-sanctuary.git
+cd nest-of-nature-sanctuary
+
+# Install dependencies
+pnpm install
+
+# Run development server
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚢 Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project is configured for automatic deployment to Vercel.
 
-## Learn More
+1. Connect your GitHub repository to Vercel
+2. Select this repository: `nest-of-nature-sanctuary`
+3. Vercel will automatically detect Next.js and deploy
+4. Set environment variables if needed
+5. Custom domain can be added in Vercel dashboard
 
-To learn more about Next.js, take a look at the following resources:
+### Build & Start
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+pnpm build
+pnpm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📝 Pages
 
-## Deploy on Vercel
+- `/` - Home page with hero and CTAs
+- `/blog` - Township stories
+- `/volunteer` - Volunteer signup form
+- `/contact` - Sponsorship and contact form
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🌐 Environment Variables
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Currently, no environment variables are required. Add any API keys or configuration to `.env.local` as needed.
+
+## 📞 Contact
+
+For inquiries about sponsorship, volunteering, or partnerships, please use the contact form on the website or reach out to Nosipho Banzana directly.
+
+## 📄 License
+
+Private project. All rights reserved.
+
+---
+
+Built with ❤️ for the women of Cape Town's deep south.

@@ -1,354 +1,198 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-
-export const dynamic = "force-dynamic";
-
-const reviews = [
-  {
-    quote:
-      "The structure was clear from day one. We launched fast and our enquiries improved within the first month.",
-    name: "Amara Dlamini",
-    role: "Founder, Coastline Advisory",
-  },
-  {
-    quote:
-      "Every page had a purpose. The automated website flow made follow-up simple for our team.",
-    name: "Luca Bennett",
-    role: "Director, Bennett Legal",
-  },
-  {
-    quote:
-      "Premium design, calm process, and smart systems that scale with our growth plan.",
-    name: "Nina Jacobs",
-    role: "Operations Lead, Blue Arc Studio",
-  },
-];
-
-function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
-  e.preventDefault();
-  const form = e.currentTarget;
-  const formData = new FormData(form);
-  const data = {
-    name: formData.get("name"),
-    email: formData.get("email"),
-    message: formData.get("message"),
-  };
-  console.log("Form submitted:", data);
-  form.reset();
-}
+import Link from 'next/link';
+import Footer from '@/components/Footer';
+import ThemeToggle from '@/components/ThemeToggle';
 
 export default function Home() {
   return (
     <>
-      <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col gap-14 px-6 py-16 lg:gap-16">
-        <section className="space-y-4">
-          <h1 className="text-4xl font-bold tracking-tight">Build something powerful</h1>
-          <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
-            Designed to scale. Built to perform.
-          </h2>
-          <p className="max-w-2xl text-lg text-gray-600">Where your business gets seen.</p>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/about"
-              className="rounded-md bg-black px-5 py-3 text-sm font-semibold text-white"
-            >
-              Learn more
-            </Link>
-            <Link
-              href="/automation"
-              className="rounded-md border border-gray-300 px-5 py-3 text-sm font-semibold text-gray-900"
-            >
-              Automation
-            </Link>
-          </div>
-        </section>
+      <header
+        style={{
+          background: 'linear-gradient(135deg, var(--nest-green), var(--leaf-dark))',
+          padding: '4rem 2rem',
+          textAlign: 'center',
+          color: 'white',
+          position: 'relative',
+          boxShadow: 'inset 0 0 100px rgba(255,255,255,0.2), 0 10px 30px rgba(0,0,0,0.1)',
+          borderBottom: '4px solid var(--egg-blue)',
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'linear-gradient(rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 50%)',
+            pointerEvents: 'none',
+          }}
+        />
 
-        <section className="space-y-3 rounded-xl border border-gray-200 p-5">
-          <h2 className="text-xl font-semibold tracking-tight">Trust snapshot</h2>
-          <ul className="grid grid-cols-1 gap-2 text-sm text-gray-700 sm:grid-cols-2 lg:flex lg:flex-row lg:flex-wrap lg:gap-3">
-            <li className="rounded-full border border-gray-200 px-3 py-1">Intelligent websites</li>
-            <li className="rounded-full border border-gray-200 px-3 py-1">Lead capture systems</li>
-            <li className="rounded-full border border-gray-200 px-3 py-1">Automation-ready</li>
-            <li className="rounded-full border border-gray-200 px-3 py-1">Security-ready</li>
-            <li className="rounded-full border border-gray-200 px-3 py-1">Built to scale</li>
-          </ul>
-        </section>
+        <div style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 10 }}>
+          <ThemeToggle />
+        </div>
 
-        <section className="space-y-2">
-          <h2 className="text-2xl font-semibold tracking-tight">Your digital shopfront</h2>
-          <div className="space-y-1 text-lg text-gray-700">
-            <p>Where your business gets seen.</p>
-            <p>Where people understand what you do.</p>
-            <p>Where decisions start to happen.</p>
-          </div>
-        </section>
-
-        <section className="space-y-2">
-          <h2 className="text-2xl font-semibold tracking-tight">Why this matters</h2>
-          <div className="space-y-1 text-lg text-gray-700">
-            <p>People are already searching.</p>
-            <p>They are already comparing.</p>
-            <p>They are already deciding.</p>
-          </div>
-        </section>
-
-        <section className="space-y-4">
-          <h2 className="text-2xl font-semibold tracking-tight">How it works</h2>
-          <div className="space-y-4 text-base text-gray-700">
-            <div className="space-y-1">
-              <h3 className="text-lg font-semibold text-black">Presence that lands</h3>
-              <p>A bold, modern website that feels right instantly.</p>
-            </div>
-            <div className="space-y-1">
-              <h3 className="text-lg font-semibold text-black">Flow that converts</h3>
-              <p>Visitors are guided clearly so they know what to do next.</p>
-            </div>
-            <div className="space-y-1">
-              <h3 className="text-lg font-semibold text-black">Intelligence that scales</h3>
-              <p>Your site evolves with automation and intelligent systems.</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="space-y-3 rounded-xl border border-gray-200 p-5">
-          <h2 className="text-2xl font-semibold tracking-tight">Built with purpose</h2>
-          <p className="text-gray-700">
-            I design intelligent websites and systems that support structured growth, combining
-            clear thinking with modern design.
-          </p>
-          <Link href="/about" className="text-sm font-semibold underline">
-            Learn more
-          </Link>
-          <p className="text-sm text-gray-500">
-            Path: <Link href="/about" className="underline">/about</Link>
-          </p>
-        </section>
-
-        <section className="space-y-3 rounded-xl border border-gray-200 p-5">
-          <h2 className="text-2xl font-semibold tracking-tight">Marine and sustainability</h2>
-          <p className="text-gray-700">A strong part of my work is shaped by the ocean.</p>
-          <p className="text-gray-700">
-            With a background in marine environments and scuba instruction, I bring a clear
-            understanding of ocean systems, biodiversity, and long-term thinking.
-          </p>
-          <ul className="list-disc space-y-1 pl-6 text-gray-700">
-            <li>SDG 14 (Life Below Water)</li>
-            <li>SDG 15 (Life on Land)</li>
-          </ul>
-        </section>
-
-        <section className="space-y-4">
-          <h2 className="text-2xl font-semibold tracking-tight">Services</h2>
-          <p className="text-gray-700">
-            Systems designed to support your business at every stage.
-          </p>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <Link
-              href="/automation"
-              className="rounded-xl border border-gray-200 p-4 transition hover:-translate-y-0.5 hover:border-gray-400 hover:shadow-sm"
-            >
-              <h3 className="text-lg font-semibold">Smart Website</h3>
-              <p className="mt-1 text-sm text-gray-700">A clean, high-impact digital presence.</p>
-            </Link>
-            <Link
-              href="/automation"
-              className="rounded-xl border border-gray-200 p-4 transition hover:-translate-y-0.5 hover:border-gray-400 hover:shadow-sm"
-            >
-              <h3 className="text-lg font-semibold">Automated Website</h3>
-              <p className="mt-1 text-sm text-gray-700">
-                A structured system that improves conversions.
-              </p>
-            </Link>
-            <Link
-              href="/automation"
-              className="rounded-xl border border-gray-200 p-4 transition hover:-translate-y-0.5 hover:border-gray-400 hover:shadow-sm"
-            >
-              <h3 className="text-lg font-semibold">Intelligent System</h3>
-              <p className="mt-1 text-sm text-gray-700">
-                Automation and AI supporting your business.
-              </p>
-            </Link>
-            <Link
-              href="/templates"
-              className="rounded-xl border border-gray-200 p-4 transition hover:-translate-y-0.5 hover:border-gray-400 hover:shadow-sm"
-            >
-              <h3 className="text-lg font-semibold">Thought Leadership System</h3>
-              <p className="mt-1 text-sm text-gray-700">
-                Pitch decks, reports, and white papers that build authority.
-              </p>
-            </Link>
-            <Link
-              href="/automation"
-              className="rounded-xl border border-gray-200 p-4 transition hover:-translate-y-0.5 hover:border-gray-400 hover:shadow-sm sm:col-span-2"
-            >
-              <h3 className="text-lg font-semibold">Security Systems (Caramel Security)</h3>
-              <p className="mt-1 text-sm text-gray-700">
-                Modern protection for your website and systems.
-              </p>
-            </Link>
-          </div>
-        </section>
-        <section className="space-y-3 rounded-xl border border-gray-200 p-5">
-          <h2 className="text-2xl font-semibold tracking-tight">Projects</h2>
-          <p className="text-gray-700">Selected work and systems designed to scale.</p>
-          <p className="text-gray-700">Designed to scale. Built to perform.</p>
-          <div className="grid gap-3 sm:grid-cols-2">
-            <Link
-              href="/gallery"
-              className="rounded-xl border border-gray-200 p-4 text-sm text-gray-700 transition hover:-translate-y-0.5 hover:border-gray-400 hover:shadow-sm"
-            >
-              Conversion-focused websites
-            </Link>
-            <Link
-              href="/gallery"
-              className="rounded-xl border border-gray-200 p-4 text-sm text-gray-700 transition hover:-translate-y-0.5 hover:border-gray-400 hover:shadow-sm"
-            >
-              Automation-led systems
-            </Link>
-          </div>
-          <Link href="/gallery" className="text-sm font-semibold underline">
-            View project gallery
-          </Link>
-        </section>
-
-        <section className="space-y-3 rounded-xl border border-gray-200 p-5">
-          <h2 className="text-2xl font-semibold tracking-tight">Resources</h2>
-          <p className="text-gray-700">Explore our templates, automation systems, pricing, and brand guidelines.</p>
-          <div className="flex flex-wrap gap-2">
-            <Link href="/pricing" className="text-sm font-semibold underline">
-              Pricing
-            </Link>
-            <span className="text-sm text-gray-500">•</span>
-            <Link href="/templates" className="text-sm font-semibold underline">
-              Templates
-            </Link>
-            <span className="text-sm text-gray-500">•</span>
-            <Link href="/automation" className="text-sm font-semibold underline">
-              Automation
-            </Link>
-            <span className="text-sm text-gray-500">•</span>
-            <Link href="/brand-kit" className="text-sm font-semibold underline">
-              Brand Kit
-            </Link>
-          </div>
-        </section>
-
-        <section className="space-y-3 rounded-xl border border-gray-200 p-5">
-          <h2 className="text-2xl font-semibold tracking-tight">Insights</h2>
-          <p className="text-gray-700">Strategies, systems, and ideas to support your growth.</p>
-          <Link href="/blog" className="text-sm font-semibold underline">
-            Read more
-          </Link>
-        </section>
-
-        <section className="space-y-4">
-          <h2 className="text-2xl font-semibold tracking-tight">What clients say</h2>
-          <div className="flex snap-x gap-4 overflow-x-auto pb-2" aria-label="Reviews carousel">
-            {reviews.map((review) => (
-              <article
-                key={review.name}
-                className="min-w-[280px] snap-start rounded-xl border border-gray-200 p-5 sm:min-w-[340px]"
-              >
-                <p className="text-sm text-gray-700">"{review.quote}"</p>
-                <p className="mt-4 text-sm font-semibold text-gray-900">{review.name}</p>
-                <p className="text-xs text-gray-500">{review.role}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="space-y-3 rounded-xl border border-gray-200 p-5">
-          <h2 className="text-2xl font-semibold tracking-tight">Work with me</h2>
-          <p className="text-gray-700">Get in touch to discuss your project.</p>
-          <ul className="list-disc space-y-1 pl-6 text-gray-700">
-            <li>Strategy consultations</li>
-            <li>Website design & development</li>
-            <li>Automation systems</li>
-          </ul>
-          <p className="text-gray-700 text-sm mt-4">
-            <strong>Email:</strong> lily@carameldigitalcontent.com
-          </p>
-          <p className="text-gray-700 text-sm">
-            <strong>WhatsApp:</strong> +27 64 220 5618
-          </p>
-        </section>
-
-        <section className="space-y-2">
-          <h2 className="text-2xl font-semibold tracking-tight">Simple systems</h2>
-          <div className="space-y-1 text-gray-700">
-            <p>Start with a strong foundation.</p>
-            <p>Expand into more advanced systems over time.</p>
-            <p>Everything stays clear and manageable.</p>
-          </div>
-          <p className="text-sm text-gray-500">
-            Path: <Link href="/services" className="underline">/services</Link>
-          </p>
-        </section>
-
-        <section className="space-y-2">
-          <h2 className="text-2xl font-semibold tracking-tight">Grow over time</h2>
-          <div className="space-y-1 text-gray-700">
-            <p>Your system evolves with you.</p>
-            <p>Add features, automation, and upgrades as your business grows.</p>
-          </div>
-        </section>
-
-        <section className="space-y-3 rounded-xl border border-gray-200 p-5">
-          <h2 className="text-2xl font-bold tracking-tight">Build your digital presence properly</h2>
-          <p className="text-gray-700">Start strong. Scale with confidence.</p>
-          <Link
-            href="/about"
-            className="w-fit rounded-md bg-black px-5 py-3 text-sm font-semibold text-white"
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <svg
+            style={{
+              width: '120px',
+              height: '120px',
+              margin: '0 auto 1.5rem',
+              filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))',
+            }}
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            Learn more
-          </Link>
-        </section>
+            <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="0.5" opacity="0.3" />
+            <path d="M50 20 C30 20 20 40 20 60 C20 80 40 90 50 90 C60 90 80 80 80 60 C80 40 70 20 50 20" fill="white" opacity="0.2" />
+            <circle cx="40" cy="75" r="5" fill="var(--egg-blue)" />
+            <circle cx="50" cy="75" r="5" fill="var(--egg-blue)" />
+            <circle cx="60" cy="75" r="5" fill="var(--egg-blue)" />
+            <text x="50" y="55" fontFamily="serif" fontSize="10" textAnchor="middle" fill="white">
+              NEST
+            </text>
+          </svg>
 
-        <section className="space-y-4 rounded-xl border border-gray-200 p-5">
-          <h2 className="text-2xl font-semibold tracking-tight">Get started</h2>
-          <div className="space-y-1 text-sm text-gray-700">
-            <p>
-              Email: <a href="mailto:lily@carameldigitalcontent.com" className="underline">lily@carameldigitalcontent.com</a>
+          <h1 style={{ fontSize: '4rem', marginBottom: '1rem', textShadow: '2px 2px 4px rgba(0,0,0,0.2)', fontFamily: "'Playfair Display', serif", fontWeight: 'bold' }}>
+            Nest of Nature
+          </h1>
+          <p style={{ fontSize: '1.5rem', fontWeight: '300' }}>A Sanctuary for Healing & Empowerment</p>
+        </div>
+      </header>
+
+      <main style={{ maxWidth: '900px', margin: '0 auto', padding: '4rem 2rem' }}>
+        <div
+          style={{
+            background: 'var(--egg-blue)',
+            color: '#064e3b',
+            padding: '1.5rem',
+            borderRadius: '12px',
+            textAlign: 'center',
+            fontWeight: '600',
+            marginBottom: '4rem',
+            boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
+          }}
+        >
+          🚀 Launching May 16, 2026 • Cape Town, South Africa
+        </div>
+
+        <div style={{ fontSize: '1.25rem', textAlign: 'center', marginBottom: '4rem', fontWeight: '300', lineHeight: '1.8' }}>
+          <p>
+            Founded by <strong>Nosipho Banzana</strong>, Nest of Nature is a beacon of hope for women facing domestic abuse in <strong>Masiphumelele</strong>, <strong>Ocean View</strong>, and <strong>Fish Hoek</strong>. We are building a community-driven sanctuary where healing begins and futures are reclaimed.
+          </p>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', marginBottom: '4rem' }}>
+          <div
+            style={{
+              background: 'var(--card-bg)',
+              padding: '2rem',
+              borderRadius: '16px',
+              borderLeft: '5px solid var(--nest-green)',
+            }}
+          >
+            <h3 style={{ marginBottom: '1rem', color: 'var(--nest-green)', fontSize: '1.5rem', fontWeight: 'bold' }}>
+              🤝 Volunteer
+            </h3>
+            <p style={{ marginBottom: '1.5rem', lineHeight: '1.6' }}>
+              We are urgently seeking <strong>Nurses</strong> and <strong>Social Workers</strong> to provide critical care and guidance. Your expertise can save lives in the Deep South.
             </p>
-            <p>
-              WhatsApp: <a href="https://wa.me/27642205618" className="underline">+27 64 220 5618</a>
-            </p>
-          </div>
-          <form className="grid gap-3 sm:grid-cols-2" onSubmit={handleFormSubmit}>
-            <input
-              type="text"
-              name="name"
-              placeholder="Name"
-              className="rounded-md border border-gray-300 px-3 py-2 text-sm"
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              className="rounded-md border border-gray-300 px-3 py-2 text-sm"
-              required
-            />
-            <textarea
-              name="message"
-              placeholder="Tell me about your project"
-              className="min-h-28 rounded-md border border-gray-300 px-3 py-2 text-sm sm:col-span-2"
-              required
-            />
-            <button
-              type="submit"
-              className="w-fit rounded-md bg-black px-5 py-3 text-sm font-semibold text-white"
+            <Link
+              href="/volunteer"
+              style={{
+                display: 'inline-block',
+                background: 'var(--nest-green)',
+                color: 'white',
+                padding: '0.75rem 1.5rem',
+                borderRadius: '8px',
+                textDecoration: 'none',
+                fontWeight: '600',
+                transition: 'transform 0.2s',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
             >
-              Send
-            </button>
-          </form>
-        </section>
+              Join as Volunteer
+            </Link>
+          </div>
+
+          <div
+            style={{
+              background: 'var(--card-bg)',
+              padding: '2rem',
+              borderRadius: '16px',
+              borderLeft: '5px solid var(--nest-green)',
+            }}
+          >
+            <h3 style={{ marginBottom: '1rem', color: 'var(--nest-green)', fontSize: '1.5rem', fontWeight: 'bold' }}>
+              💚 Sponsor
+            </h3>
+            <p style={{ marginBottom: '1.5rem', lineHeight: '1.6' }}>
+              From individual donations to corporate grants, every Rand helps. We are currently applying for Lotto funding and seeking partners to secure our sanctuary.
+            </p>
+            <Link
+              href="/contact"
+              style={{
+                display: 'inline-block',
+                background: 'var(--nest-green)',
+                color: 'white',
+                padding: '0.75rem 1.5rem',
+                borderRadius: '8px',
+                textDecoration: 'none',
+                fontWeight: '600',
+                transition: 'transform 0.2s',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              Become a Sponsor
+            </Link>
+          </div>
+        </div>
+
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <h2 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem', color: 'var(--nest-green)' }}>
+            Join the Movement
+          </h2>
+          <p style={{ fontSize: '1.1rem', marginBottom: '2rem', opacity: 0.8 }}>
+            Help us provide safety, healing, and hope for the women of Cape Town.
+          </p>
+          <Link
+            href="/blog"
+            style={{
+              display: 'inline-block',
+              background: 'var(--leaf-dark)',
+              color: 'white',
+              padding: '1rem 2rem',
+              borderRadius: '8px',
+              textDecoration: 'none',
+              fontWeight: '600',
+              marginRight: '1rem',
+              transition: 'transform 0.2s',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+            }}
+          >
+            Read Our Stories
+          </Link>
+        </div>
       </main>
+
       <Footer />
-      <WhatsAppButton />
     </>
   );
 }
