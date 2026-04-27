@@ -1,9 +1,25 @@
+'use client';
+
+import Link from 'next/link';
+import Footer from '@/components/Footer';
+
+export default function HomePage() {
+  return (
+    <>
+      <header
+        style={{
+          background: 'linear-gradient(135deg, var(--leaf-dark), var(--nest-green))',
+          color: 'white',
+          padding: '5rem 2rem 4rem',
+          textAlign: 'center',
+        }}
+      >
         <div style={{ position: 'relative', zIndex: 1 }}>
           <svg
             style={{
               width: '120px',
               height: '120px',
-              margin: '0 88 1.5rem',
+              margin: '0 auto 1.5rem',
               filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))',
             }}
             viewBox="0 0 100 100"
