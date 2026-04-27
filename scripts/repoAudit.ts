@@ -6,6 +6,7 @@ const ROOT = process.cwd()
 function shouldIgnore(file: string) {
   return (
     file.includes("node_modules") ||
+    file.includes(".pnpm-store") ||
     file.includes(".git") ||
     file.includes(".next") ||
     file.includes("README.md") ||
