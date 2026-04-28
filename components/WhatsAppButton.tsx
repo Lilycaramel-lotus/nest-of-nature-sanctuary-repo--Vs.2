@@ -2,6 +2,15 @@
 
 export default function WhatsAppButton() {
   const url = "https://wa.me/27642205618";
+  
+  const handleClick = () => {
+    // Track WhatsApp click event
+    if (typeof window !== 'undefined' && window.trackEvent) {
+      window.trackEvent('whatsapp_click', {
+        url: url,
+      });
+    }
+  };
 
   return (
     <a
@@ -9,6 +18,7 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
+      onClick={handleClick}
       className="
         fixed 
         bottom-[24px] 

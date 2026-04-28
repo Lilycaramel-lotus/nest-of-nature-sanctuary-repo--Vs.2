@@ -18,11 +18,51 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Contact form submitted:', formData);
-    alert('Thank you for reaching out! Nosipho will be in touch soon.');
-    setFormData({ name: '', email: '', phone: '', inquiryType: '', message: '' });
+    
+    // Validation
+    if (!formData.email || !formData.message) {
+      alert('Please fill in all required fields (email and message).');
+      return;
+    }
+    
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    
+    try {
+      // Send to API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        }),
+      });
+      
+      if (response.ok) {
+        // Track event
+        if (typeof window !== 'undefined' && window.trackEvent) {
+          window.trackEvent('form_submit', {
+            form_type: 'contact',
+            inquiry_type: formData.inquiryType,
+          });
+        }
+        
+        console.log('Contact form submitted:', formData);
+        alert('Thank you for reaching out! Nosipho will be in touch soon.');
+        setFormData({ name: '', email: '', phone: '', inquiryType: '', message: '' });
+      } else {
+        alert('There was an error sending your message. Please try again.');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('There was an error sending your message. Please try again.');
+    }
   };
 
   return (

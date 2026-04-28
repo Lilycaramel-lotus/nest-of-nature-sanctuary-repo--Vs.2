@@ -19,11 +19,51 @@ export default function Volunteer() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Volunteer form submitted:', formData);
-    alert('Thank you for your interest! We will be in touch soon.');
-    setFormData({ name: '', email: '', phone: '', profession: '', experience: '', message: '' });
+    
+    // Validation
+    if (!formData.email || !formData.profession) {
+      alert('Please fill in all required fields (email and profession).');
+      return;
+    }
+    
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    
+    try {
+      // Send to API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: formData.email,
+          phone: formData.phone,
+          message: `Profession: ${formData.profession}. Experience: ${formData.experience}. Additional: ${formData.message}`,
+        }),
+      });
+      
+      if (response.ok) {
+        // Track event
+        if (typeof window !== 'undefined' && window.trackEvent) {
+          window.trackEvent('form_submit', {
+            form_type: 'volunteer',
+            profession: formData.profession,
+          });
+        }
+        
+        console.log('Volunteer form submitted:', formData);
+        alert('Thank you for your interest! We will be in touch soon.');
+        setFormData({ name: '', email: '', phone: '', profession: '', experience: '', message: '' });
+      } else {
+        alert('There was an error submitting your form. Please try again.');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('There was an error submitting your form. Please try again.');
+    }
   };
 
   return (
