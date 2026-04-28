@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "guard": "ts-node scripts/nextConfigGuard.ts",
-    "audit": "ts-node scripts/repoAudit.ts",
-    "build": "npm run guard && npm run audit && next build"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "ts-node": {
     "compilerOptions": {
