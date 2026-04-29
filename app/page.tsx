@@ -1,178 +1,229 @@
-'use client';
+import Link from "next/link";
 
-import Link from 'next/link';
-import Footer from '@/components/Footer';
-
-export default function HomePage() {
+export default function Home() {
   return (
-    <>
-      <header
-        style={{
-          background: 'linear-gradient(135deg, var(--leaf-dark), var(--nest-green))',
-          color: 'white',
-          padding: '5rem 2rem 4rem',
-          textAlign: 'center',
-        }}
-      >
-        <div style={{ position: 'relative', zIndex: 1 }}>
-          <svg
-            style={{
-              width: '120px',
-              height: '120px',
-              margin: '0 auto 1.5rem',
-              filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))',
-            }}
-            viewBox="0 0 100 100"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="0.5" opacity="0.3" />
-            <path d="M50 20 C30 20 20 40 20 60 C20 80 40 90 50 90 C60 90 80 80 80 60 C80 40 70 20 50 20" fill="white" opacity="0.2" />
-            <circle cx="40" cy="75" r="5" fill="var(--egg-blue)" />
-            <circle cx="50" cy="75" r="5" fill="var(--egg-blue)" />
-            <circle cx="60" cy="75" r="5" fill="var(--egg-blue)" />
-            <text x="50" y="55" fontFamily="serif" fontSize="10" textAnchor="middle" fill="white">
-              NEST
-            </text>
-          </svg>
+    <main className="min-h-screen bg-[var(--bg-main)] text-[var(--text-primary)]">
 
-          <h1 style={{ fontSize: '4rem', marginBottom: '1rem', textShadow: '2px 2px 4px rgba(0,0,0,0.2)', fontFamily: "'Playfair Display', serif", fontWeight: 'bold' }}>
-            Nest of Nature
-          </h1>
-          <p style={{ fontSize: '1.5rem', fontWeight: '300' }}>A Sanctuary for Healing & Empowerment</p>
+      {/* EMERGENCY STRIP */}
+      <section className="bg-[var(--green)] text-white py-3 px-6 text-center text-sm">
+        Need help now?
+        <a href="#" className="underline ml-2">WhatsApp</a>
+      </section>
+
+      {/* HERO */}
+      <section className="relative h-[85vh] flex items-center overflow-hidden">
+
+        {/* BACKGROUND IMAGE */}
+        <div className="absolute inset-0 bg-[url('/hero.jpg')] bg-cover bg-center" />
+
+        {/* OVERLAY */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-main)]/90 via-[var(--bg-main)]/60 to-transparent" />
+
+        {/* CONTENT */}
+        <div className="relative max-w-6xl mx-auto px-6 w-full">
+          <div className="max-w-xl">
+
+            <h1 className="text-4xl md:text-5xl leading-tight mb-6">
+              Support for Women in Cape Town
+            </h1>
+
+            <p className="text-lg text-[var(--text-muted)] mb-8">
+              Direct help for women facing crisis. Food, electricity, safety, and real support when it matters most.
+            </p>
+
+            <div className="flex gap-4 flex-wrap">
+              <Link
+                href="/support"
+                className="px-6 py-3 rounded-lg bg-[var(--teal)] text-white"
+              >
+                Get Support
+              </Link>
+
+              <Link
+                href="/contact"
+                className="px-6 py-3 rounded-lg border border-[var(--teal)] text-[var(--teal)]"
+              >
+                Donate
+              </Link>
+            </div>
+
+          </div>
         </div>
-      </header>
+      </section>
 
-      <main style={{ maxWidth: '900px', margin: '0 auto', padding: '4rem 2rem' }}>
-        <div
-          style={{
-            background: 'var(--egg-blue)',
-            color: '#064e3b',
-            padding: '1.5rem',
-            borderRadius: '12px',
-            textAlign: 'center',
-            fontWeight: '600',
-            marginBottom: '4rem',
-            boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
-          }}
-        >
-          🚀 Launching May 16, 2026 • Cape Town, South Africa
-        </div>
-
-        <div style={{ fontSize: '1.25rem', textAlign: 'center', marginBottom: '4rem', fontWeight: '300', lineHeight: '1.8' }}>
-          <p>
-            Founded by <strong>Nosipho Banzana</strong>, Nest of Nature is a beacon of hope for women facing domestic abuse in <strong>Masiphumelele</strong>, <strong>Ocean View</strong>, and <strong>Fish Hoek</strong>. We are building a community-driven sanctuary where healing begins and futures are reclaimed.
+      {/* SAFETY + CONFIDENTIALITY */}
+      <section className="py-10 px-6 text-center">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-sm text-[var(--text-muted)]">
+            Your situation is handled with care and privacy. You are not judged. You can reach out safely and confidentially.
           </p>
         </div>
+      </section>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', marginBottom: '4rem' }}>
-          <div
-            style={{
-              background: 'var(--card-bg)',
-              padding: '2rem',
-              borderRadius: '16px',
-              borderLeft: '5px solid var(--nest-green)',
-            }}
-          >
-            <h3 style={{ marginBottom: '1rem', color: 'var(--nest-green)', fontSize: '1.5rem', fontWeight: 'bold' }}>
-              🤝 Volunteer
-            </h3>
-            <p style={{ marginBottom: '1.5rem', lineHeight: '1.6' }}>
-              We are urgently seeking <strong>Nurses</strong> and <strong>Social Workers</strong> to provide critical care and guidance. Your expertise can save lives in the Deep South.
-            </p>
-            <Link
-              href="/volunteer"
-              style={{
-                display: 'inline-block',
-                background: 'var(--nest-green)',
-                color: 'white',
-                padding: '0.75rem 1.5rem',
-                borderRadius: '8px',
-                textDecoration: 'none',
-                fontWeight: '600',
-                transition: 'transform 0.2s',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}
-            >
-              Join as Volunteer
-            </Link>
-          </div>
+      {/* WHAT THIS IS */}
+      <section className="py-24 px-6 bg-[var(--bg-soft)]">
+        <div className="max-w-4xl mx-auto text-center">
 
-          <div
-            style={{
-              background: 'var(--card-bg)',
-              padding: '2rem',
-              borderRadius: '16px',
-              borderLeft: '5px solid var(--nest-green)',
-            }}
-          >
-            <h3 style={{ marginBottom: '1rem', color: 'var(--nest-green)', fontSize: '1.5rem', fontWeight: 'bold' }}>
-              💚 Sponsor
-            </h3>
-            <p style={{ marginBottom: '1.5rem', lineHeight: '1.6' }}>
-              From individual donations to corporate grants, every Rand helps. We are currently applying for Lotto funding and seeking partners to secure our sanctuary.
-            </p>
-            <Link
-              href="/contact"
-              style={{
-                display: 'inline-block',
-                background: 'var(--nest-green)',
-                color: 'white',
-                padding: '0.75rem 1.5rem',
-                borderRadius: '8px',
-                textDecoration: 'none',
-                fontWeight: '600',
-                transition: 'transform 0.2s',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}
-            >
-              Become a Sponsor
-            </Link>
-          </div>
-        </div>
-
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem', color: 'var(--nest-green)' }}>
-            Join the Movement
+          <h2 className="text-2xl mb-6">
+            Real support. Real situations.
           </h2>
-          <p style={{ fontSize: '1.1rem', marginBottom: '2rem', opacity: 0.8 }}>
-            Help us provide safety, healing, and hope for the women of Cape Town.
-          </p>
-          <Link
-            href="/blog"
-            style={{
-              display: 'inline-block',
-              background: 'var(--leaf-dark)',
-              color: 'white',
-              padding: '1rem 2rem',
-              borderRadius: '8px',
-              textDecoration: 'none',
-              fontWeight: '600',
-              marginRight: '1rem',
-              transition: 'transform 0.2s',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-            }}
-          >
-            Read Our Stories
-          </Link>
-        </div>
-      </main>
 
-      <Footer />
-    </>
+          <p className="text-[var(--text-muted)] leading-relaxed">
+            This work focuses on women supporting children on their own. Many are dealing with financial pressure, unsafe environments, or isolation. Support is practical, immediate, and based on real needs.
+          </p>
+
+        </div>
+      </section>
+
+      {/* HOW SUPPORT WORKS */}
+      <section className="py-24 px-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center">
+
+          {[
+            { title: "Reach out", desc: "Message directly. No forms needed." },
+            { title: "We understand", desc: "Each situation is listened to properly." },
+            { title: "We act", desc: "Support is given as quickly as possible." }
+          ].map((item, i) => (
+            <div key={i}>
+              <h3 className="mb-3 text-[var(--teal)]">{item.title}</h3>
+              <p className="text-[var(--text-muted)]">{item.desc}</p>
+            </div>
+          ))}
+
+        </div>
+      </section>
+
+      {/* SUPPORT TYPES */}
+      <section className="py-24 px-6 bg-[var(--bg-soft)]">
+        <div className="max-w-6xl mx-auto">
+
+          <h2 className="text-3xl text-center mb-16">
+            What support can include
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              "Food and groceries",
+              "Electricity support",
+              "Baby essentials",
+              "Transport to clinics",
+              "Safe spaces",
+              "Emotional support"
+            ].map((item, i) => (
+              <div key={i} className="p-8 rounded-2xl bg-[var(--bg-card)] border border-[var(--mint-light)]">
+                {item}
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* DONATION CLARITY */}
+      <section className="py-24 px-6">
+        <div className="max-w-5xl mx-auto text-center">
+
+          <h2 className="text-2xl mb-6">
+            How donations are used
+          </h2>
+
+          <p className="text-[var(--text-muted)] max-w-2xl mx-auto mb-10">
+            Donations are used directly for essential support. Each situation is different, but funds typically go toward immediate needs like food, electricity, and basic care.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-8">
+
+            <div className="p-6 rounded-xl bg-[var(--bg-soft)]">
+              <strong>Small support</strong>
+              <p className="text-sm mt-2 text-[var(--text-muted)]">
+                Food for a few days or transport to a clinic.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-xl bg-[var(--bg-soft)]">
+              <strong>Medium support</strong>
+              <p className="text-sm mt-2 text-[var(--text-muted)]">
+                Electricity vouchers or baby essentials.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-xl bg-[var(--bg-soft)]">
+              <strong>Ongoing support</strong>
+              <p className="text-sm mt-2 text-[var(--text-muted)]">
+                Continued help based on changing needs.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* TRUST BLOCK */}
+      <section className="py-24 px-6 bg-[var(--aqua-soft)]">
+        <div className="max-w-4xl mx-auto text-center">
+
+          <h2 className="text-2xl mb-6">
+            Built on trust and direct action
+          </h2>
+
+          <p className="text-[var(--text-muted)] leading-relaxed">
+            Support is coordinated directly within the community. The focus is simple. Understand the need. Respond quickly. Help in a real, practical way.
+          </p>
+
+        </div>
+      </section>
+
+      {/* LOCATION */}
+      <section className="py-24 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+
+          <h2 className="text-2xl mb-6">
+            Where support happens
+          </h2>
+
+          <p className="text-[var(--text-muted)]">
+            Support reaches women across Masiphumelele, Ocean View, Red Hill, Capricorn, Kommetjie, Scarborough, Simon’s Town, and surrounding areas.
+          </p>
+
+        </div>
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="py-24 px-6 text-center">
+
+        <h2 className="text-2xl mb-6">
+          Get help or support someone today
+        </h2>
+
+        <div className="flex flex-col md:flex-row justify-center gap-6">
+
+          <Link
+            href="/support"
+            className="px-6 py-3 rounded-lg bg-[var(--teal)] text-white"
+          >
+            Get Support
+          </Link>
+
+          <Link
+            href="/contact"
+            className="px-6 py-3 rounded-lg bg-[var(--green)] text-white"
+          >
+            Donate
+          </Link>
+
+        </div>
+
+      </section>
+
+      {/* FLOATING WHATSAPP */}
+      <a
+        href="#"
+        className="fixed bottom-6 right-6 px-5 py-3 rounded-full bg-[var(--green)] text-white shadow-lg"
+      >
+        WhatsApp
+      </a>
+
+    </main>
   );
 }
