@@ -1,49 +1,71 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   LOCKED BRAND TOKENS
+   ========================= */
 
 :root {
-  --nest-green: #10B981;
-  --leaf-dark: #047857;
-  --egg-blue: #6EE7B7;
-  --background: #ffffff;
-  --foreground: #1f2937;
-  --card-bg: #f9fafb;
+  /* BACKGROUNDS */
+  --bg-main: #ECFEFF;
+  --bg-soft: #F0FDFA;
+  --bg-card: #FFFFFF;
+
+  /* TEXT */
+  --text-primary: #0F172A;
+  --text-muted: #334155;
+
+  /* TEAL / AQUA (PRIMARY) */
+  --teal-deep: #0F766E;
+  --teal: #0E7490;
+  --aqua: #67E8F9;
+  --aqua-soft: #A7F3D0;
+  --mint-light: #D1FAE5;
+
+  /* GREEN (ACCENTS ONLY) */
+  --green: #16A34A;
+  --green-muted: #15803D;
+  --green-deep: #166534;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-nest-green: var(--nest-green);
-  --color-leaf-dark: var(--leaf-dark);
-  --color-egg-blue: var(--egg-blue);
-}
+/* =========================
+   BASE STYLES
+   ========================= */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #064e3b;
-    --foreground: #ecfdf5;
-    --card-bg: #065f46;
-  }
-}
-
-[data-theme="dark"] {
-  --background: #064e3b;
-  --foreground: #ecfdf5;
-  --card-bg: #065f46;
-}
-
-[data-theme="light"] {
-  --background: #ffffff;
-  --foreground: #1f2937;
-  --card-bg: #f9fafb;
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  transition: background 0.3s, color 0.3s;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-* {
-  transition: background 0.3s, color 0.3s;
+/* HEADINGS */
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: -0.02em;
+}
+
+/* =========================
+   SAFE DEFAULTS
+   ========================= */
+
+/* Links */
+a {
+  color: var(--teal);
+  text-decoration: none;
+}
+
+/* Buttons baseline */
+button {
+  cursor: pointer;
+}
+
+/* Sections */
+section {
+  background: transparent;
 }
