@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* =========================
-   LOCKED BRAND TOKENS
-   ========================= */
+/* === LOCKED BRAND TOKENS === */
 
 :root {
   /* BACKGROUNDS */
@@ -23,49 +21,54 @@
   --aqua-soft: #A7F3D0;
   --mint-light: #D1FAE5;
 
-  /* GREEN (ACCENTS ONLY) */
+  /* GREEN (CTA ONLY) */
   --green: #16A34A;
   --green-muted: #15803D;
   --green-deep: #166534;
 }
 
-/* =========================
-   BASE STYLES
-   ========================= */
-
-html, body {
-  margin: 0;
-  padding: 0;
-}
+/* === BASE === */
 
 body {
   background: var(--bg-main);
   color: var(--text-primary);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
-/* HEADINGS */
-h1, h2, h3 {
+/* === TEXT SYSTEM (NO BLACK) === */
+
+p,
+span,
+div,
+li,
+small {
+  color: var(--text-muted);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-primary);
   font-family: 'Playfair Display', serif;
-  letter-spacing: -0.02em;
 }
 
-/* =========================
-   SAFE DEFAULTS
-   ========================= */
-
-/* Links */
 a {
   color: var(--teal);
-  text-decoration: none;
 }
 
-/* Buttons baseline */
-button {
-  cursor: pointer;
+/* === TYPOGRAPHY SCALE === */
+
+h1 {
+  @apply text-4xl md:text-5xl leading-tight;
 }
 
-/* Sections */
-section {
-  background: transparent;
+h2 {
+  @apply text-2xl md:text-3xl;
+}
+
+h3 {
+  @apply text-xl;
 }
