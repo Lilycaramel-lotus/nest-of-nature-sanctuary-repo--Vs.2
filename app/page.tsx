@@ -2,47 +2,38 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[var(--bg-main)] text-[var(--text-primary)]">
+    <main className="min-h-screen bg-[var(--bg-main)]">
 
       {/* EMERGENCY STRIP */}
       <section className="bg-[var(--green)] text-white py-3 px-6 text-center text-sm">
         Need help now?
-        <a href="#" className="underline ml-2">WhatsApp</a>
+        <a href="#" className="underline ml-2 text-white">WhatsApp</a>
       </section>
 
       {/* HERO */}
       <section className="relative h-[85vh] flex items-center overflow-hidden">
 
-        {/* BACKGROUND IMAGE */}
         <div className="absolute inset-0 bg-[url('/hero.jpg')] bg-cover bg-center" />
 
-        {/* OVERLAY */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-main)]/90 via-[var(--bg-main)]/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--teal-deep)]/90 via-[var(--teal)]/80 to-[var(--aqua)]/60" />
 
-        {/* CONTENT */}
         <div className="relative max-w-6xl mx-auto px-6 w-full">
-          <div className="max-w-xl">
+          <div className="max-w-xl text-white">
 
-            <h1 className="text-4xl md:text-5xl leading-tight mb-6">
+            <h1 className="mb-6 text-white">
               Support for Women in Cape Town
             </h1>
 
-            <p className="text-lg text-[var(--text-muted)] mb-8">
+            <p className="text-lg mb-8 text-white/90">
               Direct help for women facing crisis. Food, electricity, safety, and real support when it matters most.
             </p>
 
             <div className="flex gap-4 flex-wrap">
-              <Link
-                href="/support"
-                className="px-6 py-3 rounded-lg bg-[var(--teal)] text-white"
-              >
+              <Link href="/support" className="px-6 py-3 rounded-lg bg-white text-[var(--teal-deep)]">
                 Get Support
               </Link>
 
-              <Link
-                href="/contact"
-                className="px-6 py-3 rounded-lg border border-[var(--teal)] text-[var(--teal)]"
-              >
+              <Link href="/contact" className="px-6 py-3 rounded-lg border border-white text-white">
                 Donate
               </Link>
             </div>
@@ -51,55 +42,45 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SAFETY + CONFIDENTIALITY */}
-      <section className="py-10 px-6 text-center">
-        <div className="max-w-3xl mx-auto">
-          <p className="text-sm text-[var(--text-muted)]">
-            Your situation is handled with care and privacy. You are not judged. You can reach out safely and confidentially.
-          </p>
-        </div>
+      {/* SAFETY */}
+      <section className="py-10 px-6 text-center bg-[var(--bg-main)]">
+        <p className="text-sm max-w-2xl mx-auto">
+          Your situation is handled with care and privacy. You are not judged. You can reach out safely and confidentially.
+        </p>
       </section>
 
-      {/* WHAT THIS IS */}
+      {/* INTRO */}
       <section className="py-24 px-6 bg-[var(--bg-soft)]">
         <div className="max-w-4xl mx-auto text-center">
-
-          <h2 className="text-2xl mb-6">
-            Real support. Real situations.
-          </h2>
-
-          <p className="text-[var(--text-muted)] leading-relaxed">
-            This work focuses on women supporting children on their own. Many are dealing with financial pressure, unsafe environments, or isolation. Support is practical, immediate, and based on real needs.
+          <h2 className="mb-6">Real support. Real situations.</h2>
+          <p className="leading-relaxed">
+            This work focuses on women supporting children on their own. Many face unsafe environments, financial pressure, and isolation. Support is practical and immediate.
           </p>
-
         </div>
       </section>
 
-      {/* HOW SUPPORT WORKS */}
-      <section className="py-24 px-6">
+      {/* HOW IT WORKS */}
+      <section className="py-24 px-6 bg-[var(--bg-main)]">
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center">
 
           {[
-            { title: "Reach out", desc: "Message directly. No forms needed." },
-            { title: "We understand", desc: "Each situation is listened to properly." },
-            { title: "We act", desc: "Support is given as quickly as possible." }
+            { title: "Reach out", desc: "Message directly." },
+            { title: "We listen", desc: "We understand your situation." },
+            { title: "We act", desc: "Support is delivered quickly." }
           ].map((item, i) => (
             <div key={i}>
               <h3 className="mb-3 text-[var(--teal)]">{item.title}</h3>
-              <p className="text-[var(--text-muted)]">{item.desc}</p>
+              <p>{item.desc}</p>
             </div>
           ))}
 
         </div>
       </section>
 
-      {/* SUPPORT TYPES */}
+      {/* SERVICES */}
       <section className="py-24 px-6 bg-[var(--bg-soft)]">
         <div className="max-w-6xl mx-auto">
-
-          <h2 className="text-3xl text-center mb-16">
-            What support can include
-          </h2>
+          <h2 className="text-center mb-16">Support provided</h2>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -115,105 +96,58 @@ export default function Home() {
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
-      {/* DONATION CLARITY */}
-      <section className="py-24 px-6">
+      {/* DONATION */}
+      <section className="py-24 px-6 bg-[var(--teal-deep)] text-white">
         <div className="max-w-5xl mx-auto text-center">
 
-          <h2 className="text-2xl mb-6">
-            How donations are used
-          </h2>
+          <h2 className="mb-6 text-white">How donations are used</h2>
 
-          <p className="text-[var(--text-muted)] max-w-2xl mx-auto mb-10">
-            Donations are used directly for essential support. Each situation is different, but funds typically go toward immediate needs like food, electricity, and basic care.
+          <p className="opacity-90 max-w-2xl mx-auto mb-10">
+            Donations go directly to essentials like food, electricity, and basic care.
           </p>
 
           <div className="grid md:grid-cols-3 gap-8">
-
-            <div className="p-6 rounded-xl bg-[var(--bg-soft)]">
-              <strong>Small support</strong>
-              <p className="text-sm mt-2 text-[var(--text-muted)]">
-                Food for a few days or transport to a clinic.
-              </p>
+            <div>
+              <strong>Food</strong>
+              <p className="text-sm opacity-80 mt-2">Daily support</p>
             </div>
-
-            <div className="p-6 rounded-xl bg-[var(--bg-soft)]">
-              <strong>Medium support</strong>
-              <p className="text-sm mt-2 text-[var(--text-muted)]">
-                Electricity vouchers or baby essentials.
-              </p>
+            <div>
+              <strong>Electricity</strong>
+              <p className="text-sm opacity-80 mt-2">Power for homes</p>
             </div>
-
-            <div className="p-6 rounded-xl bg-[var(--bg-soft)]">
-              <strong>Ongoing support</strong>
-              <p className="text-sm mt-2 text-[var(--text-muted)]">
-                Continued help based on changing needs.
-              </p>
+            <div>
+              <strong>Care</strong>
+              <p className="text-sm opacity-80 mt-2">Support where needed</p>
             </div>
-
           </div>
 
         </div>
       </section>
 
-      {/* TRUST BLOCK */}
-      <section className="py-24 px-6 bg-[var(--aqua-soft)]">
-        <div className="max-w-4xl mx-auto text-center">
-
-          <h2 className="text-2xl mb-6">
-            Built on trust and direct action
-          </h2>
-
-          <p className="text-[var(--text-muted)] leading-relaxed">
-            Support is coordinated directly within the community. The focus is simple. Understand the need. Respond quickly. Help in a real, practical way.
-          </p>
-
-        </div>
-      </section>
-
       {/* LOCATION */}
-      <section className="py-24 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-
-          <h2 className="text-2xl mb-6">
-            Where support happens
-          </h2>
-
-          <p className="text-[var(--text-muted)]">
-            Support reaches women across Masiphumelele, Ocean View, Red Hill, Capricorn, Kommetjie, Scarborough, Simon’s Town, and surrounding areas.
-          </p>
-
-        </div>
+      <section className="py-24 px-6 bg-[var(--aqua-soft)] text-center">
+        <h2 className="mb-6">Where support happens</h2>
+        <p className="max-w-2xl mx-auto">
+          Masiphumelele, Ocean View, Red Hill, Capricorn, Kommetjie, Scarborough, Simon’s Town, and surrounding areas.
+        </p>
       </section>
 
-      {/* FINAL CTA */}
-      <section className="py-24 px-6 text-center">
-
-        <h2 className="text-2xl mb-6">
-          Get help or support someone today
-        </h2>
+      {/* CTA */}
+      <section className="py-24 px-6 text-center bg-[var(--bg-main)]">
+        <h2 className="mb-6">Get help or support someone</h2>
 
         <div className="flex flex-col md:flex-row justify-center gap-6">
-
-          <Link
-            href="/support"
-            className="px-6 py-3 rounded-lg bg-[var(--teal)] text-white"
-          >
+          <Link href="/support" className="px-6 py-3 rounded-lg bg-[var(--teal)] text-white">
             Get Support
           </Link>
 
-          <Link
-            href="/contact"
-            className="px-6 py-3 rounded-lg bg-[var(--green)] text-white"
-          >
+          <Link href="/contact" className="px-6 py-3 rounded-lg bg-[var(--green)] text-white">
             Donate
           </Link>
-
         </div>
-
       </section>
 
       {/* FLOATING WHATSAPP */}
@@ -226,4 +160,4 @@ export default function Home() {
 
     </main>
   );
-}
+            }
