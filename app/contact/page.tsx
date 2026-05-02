@@ -10,319 +10,235 @@ export default function Contact() {
     email: '',
     phone: '',
     inquiryType: '',
+    roles: [] as string[],
     message: '',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  function toggleRole(role: string) {
+    setFormData((prev) => {
+      const exists = prev.roles.includes(role);
+      return {
+        ...prev,
+        roles: exists
+          ? prev.roles.filter((r) => r !== role)
+          : [...prev.roles, role],
+      };
+    });
+  }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
-    // Validation
+
     if (!formData.email || !formData.message) {
-      alert('Please fill in all required fields (email and message).');
+      alert('Please fill in all required fields.');
       return;
     }
-    
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      alert('Please enter a valid email address.');
-      return;
-    }
-    
+
     try {
-      // Send to API
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: formData.email,
-          phone: formData.phone,
-          message: formData.message,
-        }),
+        body: JSON.stringify(formData),
       });
-      
+
       if (response.ok) {
-        // Track event
-        if (typeof window !== 'undefined' && window.trackEvent) {
-          window.trackEvent('form_submit', {
-            form_type: 'contact',
-            inquiry_type: formData.inquiryType,
-          });
-        }
-        
         console.log('Contact form submitted:', formData);
-        alert('Thank you for reaching out! Nosipho will be in touch soon.');
-        setFormData({ name: '', email: '', phone: '', inquiryType: '', message: '' });
+        alert('Thank you. We will respond as soon as possible.');
+
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          inquiryType: '',
+          roles: [],
+          message: '',
+        });
       } else {
-        alert('There was an error sending your message. Please try again.');
+        alert('There was an error. Please try again.');
       }
     } catch (error) {
-      console.error('Form submission error:', error);
-      alert('There was an error sending your message. Please try again.');
+      console.error(error);
+      alert('There was an error. Please try again.');
     }
   };
 
   return (
     <>
-      <main style={{ maxWidth: '900px', margin: '0 auto', padding: '4rem 2rem' }}>
-        <Link
-          href="/"
-          style={{
-            display: 'inline-block',
-            color: 'var(--nest-green)',
-            textDecoration: 'none',
-            marginBottom: '2rem',
-            fontWeight: '600',
-          }}
-        >
-          ← Back to Home
+      <main style={{ maxWidth: '900px', margin: '0 auto', padding: '3rem 1.5rem' }}>
+        
+        <Link href="/" style={{ marginBottom: '2rem', display: 'inline-block' }}>
+          ← Back
         </Link>
 
-        <h1 style={{ fontSize: '3rem', fontWeight: 'bold', marginBottom: '1rem', color: 'var(--nest-green)' }}>
-          Get in Touch
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>
+          Contact & Support
         </h1>
-        <p style={{ fontSize: '1.1rem', marginBottom: '4rem', opacity: 0.8 }}>
-          Whether you want to sponsor, volunteer, or learn more about Nest of Nature, we'd love to hear from you.
+
+        <p style={{ marginBottom: '2rem', opacity: 0.8 }}>
+          Reach out for support, volunteering, or donations.
         </p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', marginBottom: '4rem' }}>
-          <div
-            style={{
-              background: 'var(--card-bg)',
-              padding: '2rem',
-              borderRadius: '12px',
-              borderLeft: '5px solid var(--nest-green)',
-            }}
-          >
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1rem', color: 'var(--leaf-dark)' }}>
-              💚 Sponsorship
-            </h3>
-            <p style={{ marginBottom: '1rem', opacity: 0.8 }}>
-              Interested in supporting our mission financially? We welcome corporate and individual sponsorships.
-            </p>
-            <p style={{ fontWeight: '600', color: 'var(--nest-green)' }}>
-              Every contribution matters.
-            </p>
-          </div>
-
-          <div
-            style={{
-              background: 'var(--card-bg)',
-              padding: '2rem',
-              borderRadius: '12px',
-              borderLeft: '5px solid var(--nest-green)',
-            }}
-          >
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1rem', color: 'var(--leaf-dark)' }}>
-              🤝 Volunteering
-            </h3>
-            <p style={{ marginBottom: '1rem', opacity: 0.8 }}>
-              Ready to make a difference? We need nurses, social workers, and dedicated community members.
-            </p>
-            <Link
-              href="/volunteer"
-              style={{
-                color: 'var(--nest-green)',
-                textDecoration: 'none',
-                fontWeight: '600',
-              }}
-            >
-              View Volunteer Opportunities →
-            </Link>
-          </div>
-
-          <div
-            style={{
-              background: 'var(--card-bg)',
-              padding: '2rem',
-              borderRadius: '12px',
-              borderLeft: '5px solid var(--nest-green)',
-            }}
-          >
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1rem', color: 'var(--leaf-dark)' }}>
-              📞 Direct Contact
-            </h3>
-            <p style={{ marginBottom: '1rem', opacity: 0.8 }}>
-              Reach out directly to Nosipho Banzana for urgent matters.
-            </p>
-            <p style={{ fontWeight: '600', color: 'var(--nest-green)' }}>
-              Coming soon
-            </p>
-          </div>
+        {/* URGENT HELP */}
+        <div
+          style={{
+            background: '#fef3c7',
+            padding: '1.5rem',
+            borderRadius: '12px',
+            marginBottom: '2rem',
+          }}
+        >
+          <strong>Need help now?</strong>
+          <p style={{ marginTop: '0.5rem' }}>
+            Use WhatsApp for the fastest response.
+          </p>
         </div>
 
+        {/* WHATSAPP */}
+        <a
+          href="https://wa.me/27XXXXXXXXX"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: 'block',
+            background: '#25D366',
+            color: 'white',
+            padding: '1rem',
+            borderRadius: '10px',
+            textAlign: 'center',
+            fontWeight: '600',
+            marginBottom: '2rem',
+            textDecoration: 'none',
+          }}
+        >
+          💬 Message on WhatsApp
+        </a>
+
+        {/* MAP */}
+        <div style={{ marginBottom: '2rem' }}>
+          <iframe
+            src="https://www.google.com/maps?q=Cape+Town&output=embed"
+            width="100%"
+            height="300"
+            style={{ border: 0, borderRadius: '12px' }}
+            loading="lazy"
+          />
+        </div>
+
+        {/* FORM */}
         <form
           onSubmit={handleSubmit}
           style={{
-            background: 'var(--card-bg)',
+            background: '#fff',
             padding: '2rem',
             borderRadius: '12px',
-            marginBottom: '4rem',
           }}
         >
-          <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1.5rem', color: 'var(--leaf-dark)' }}>
-            Send us a Message
-          </h2>
+          <h2 style={{ marginBottom: '1.5rem' }}>Send a Message</h2>
 
-          <div style={{ marginBottom: '1.5rem' }}>
-            <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem', color: 'var(--leaf-dark)' }}>
-              Full Name *
-            </label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              style={{
-                width: '100%',
-                padding: '0.75rem',
-                border: '1px solid #ccc',
-                borderRadius: '8px',
-                fontSize: '1rem',
-                fontFamily: 'inherit',
-              }}
-            />
-          </div>
+          <input
+            type="text"
+            name="name"
+            placeholder="Full Name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            style={{ width: '100%', marginBottom: '1rem', padding: '0.75rem' }}
+          />
 
-          <div style={{ marginBottom: '1.5rem' }}>
-            <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem', color: 'var(--leaf-dark)' }}>
-              Email *
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              style={{
-                width: '100%',
-                padding: '0.75rem',
-                border: '1px solid #ccc',
-                borderRadius: '8px',
-                fontSize: '1rem',
-                fontFamily: 'inherit',
-              }}
-            />
-          </div>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            style={{ width: '100%', marginBottom: '1rem', padding: '0.75rem' }}
+          />
 
-          <div style={{ marginBottom: '1.5rem' }}>
-            <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem', color: 'var(--leaf-dark)' }}>
-              Phone Number
-            </label>
-            <input
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              style={{
-                width: '100%',
-                padding: '0.75rem',
-                border: '1px solid #ccc',
-                borderRadius: '8px',
-                fontSize: '1rem',
-                fontFamily: 'inherit',
-              }}
-            />
-          </div>
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Phone (optional)"
+            value={formData.phone}
+            onChange={handleChange}
+            style={{ width: '100%', marginBottom: '1rem', padding: '0.75rem' }}
+          />
 
-          <div style={{ marginBottom: '1.5rem' }}>
-            <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem', color: 'var(--leaf-dark)' }}>
-              Inquiry Type *
-            </label>
-            <select
-              name="inquiryType"
-              value={formData.inquiryType}
-              onChange={handleChange}
-              required
-              style={{
-                width: '100%',
-                padding: '0.75rem',
-                border: '1px solid #ccc',
-                borderRadius: '8px',
-                fontSize: '1rem',
-                fontFamily: 'inherit',
-              }}
-            >
-              <option value="">Select an option</option>
-              <option value="sponsorship">Sponsorship / Donation</option>
-              <option value="partnership">Corporate Partnership</option>
-              <option value="media">Media Inquiry</option>
-              <option value="general">General Question</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
+          <select
+            name="inquiryType"
+            value={formData.inquiryType}
+            onChange={handleChange}
+            required
+            style={{ width: '100%', marginBottom: '1rem', padding: '0.75rem' }}
+          >
+            <option value="">Select type</option>
+            <option value="support">I need support</option>
+            <option value="volunteer">I want to volunteer</option>
+            <option value="donation">I want to donate</option>
+            <option value="general">General enquiry</option>
+          </select>
 
-          <div style={{ marginBottom: '1.5rem' }}>
-            <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem', color: 'var(--leaf-dark)' }}>
-              Message *
-            </label>
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              placeholder="Tell us how you'd like to support or partner with Nest of Nature..."
-              required
-              style={{
-                width: '100%',
-                padding: '0.75rem',
-                border: '1px solid #ccc',
-                borderRadius: '8px',
-                fontSize: '1rem',
-                fontFamily: 'inherit',
-                minHeight: '150px',
-                resize: 'vertical',
-              }}
-            />
-          </div>
+          {/* VOLUNTEER CHECKBOXES */}
+          {formData.inquiryType === 'volunteer' && (
+            <div style={{ marginBottom: '1rem' }}>
+              <p style={{ marginBottom: '0.5rem' }}>How can you help?</p>
+
+              {['nurse', 'social_worker', 'mentor', 'other'].map((role) => (
+                <label key={role} style={{ display: 'block' }}>
+                  <input
+                    type="checkbox"
+                    checked={formData.roles.includes(role)}
+                    onChange={() => toggleRole(role)}
+                  />{' '}
+                  {role.replace('_', ' ')}
+                </label>
+              ))}
+            </div>
+          )}
+
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            placeholder={
+              formData.inquiryType === 'support'
+                ? 'Tell us what you need help with'
+                : 'Write your message'
+            }
+            required
+            style={{
+              width: '100%',
+              marginBottom: '1rem',
+              padding: '0.75rem',
+              minHeight: '120px',
+            }}
+          />
 
           <button
             type="submit"
             style={{
-              background: 'var(--nest-green)',
+              background: '#16a34a',
               color: 'white',
-              padding: '1rem 2rem',
+              padding: '1rem',
               borderRadius: '8px',
-              border: 'none',
-              fontSize: '1rem',
-              fontWeight: '600',
-              cursor: 'pointer',
-              transition: 'transform 0.2s',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
+              width: '100%',
             }}
           >
             Send Message
           </button>
         </form>
 
-        <div
-          style={{
-            background: 'var(--egg-blue)',
-            color: '#064e3b',
-            padding: '2rem',
-            borderRadius: '12px',
-            textAlign: 'center',
-            marginBottom: '4rem',
-          }}
-        >
-          <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-            🚀 Launching May 16, 2026
-          </h3>
-          <p style={{ marginBottom: '1rem' }}>
-            Join us in Cape Town as we officially launch Nest of Nature and begin our mission to support women in the deep south.
-          </p>
-          <p style={{ fontSize: '0.9rem', opacity: 0.9 }}>
-            Nosipho's phone number will be shared at launch. Until then, please use this form to get in touch.
-          </p>
-        </div>
+        {/* EXPECTATION */}
+        <p style={{ marginTop: '1.5rem', fontSize: '0.9rem', opacity: 0.7 }}>
+          We respond as soon as possible. Support requests are prioritized.
+        </p>
       </main>
 
       <Footer />
